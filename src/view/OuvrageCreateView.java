@@ -3,8 +3,6 @@ import bean.Auteur;
 import bean.Ouvrage;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import service.AuteurFacade;
 import service.OuvrageFacade;
@@ -20,14 +18,14 @@ import service.OuvrageFacade;
  *
  * @author farah
  */
-public class GestionOuvrage extends javax.swing.JFrame {
+public class OuvrageCreateView extends javax.swing.JFrame {
     OuvrageFacade ouvrageFacade = new OuvrageFacade();
     AuteurFacade auteurFacade = new AuteurFacade();
 
     /**
      * Creates new form GestionOuvrage
      */
-    public GestionOuvrage() {
+    public OuvrageCreateView() {
         initComponents();
     }
 
@@ -68,18 +66,11 @@ public class GestionOuvrage extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -205,47 +196,15 @@ public class GestionOuvrage extends javax.swing.JFrame {
         jButton2.setBounds(130, 330, 90, 40);
 
         jButton3.setText("Suprimer");
-        jPanel2.add(jButton3);
-        jButton3.setBounds(250, 330, 100, 40);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(360, 170, 390, 140);
-
-        jLabel1.setText("Recherche par:");
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(380, 30, 90, 14);
-        jPanel2.add(jTextField1);
-        jTextField1.setBounds(130, 20, 180, 30);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "identifiant", "auteur", "tout afficher", "" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                jButton3ActionPerformed(evt);
             }
         });
-        jPanel2.add(jComboBox1);
-        jComboBox1.setBounds(530, 20, 110, 30);
-
-        jButton4.setText("Rechercher");
-        jPanel2.add(jButton4);
-        jButton4.setBounds(390, 110, 140, 23);
-
-        jButton5.setText("Actualiser");
-        jPanel2.add(jButton5);
-        jButton5.setBounds(480, 350, 140, 40);
+        jPanel2.add(jButton3);
+        jButton3.setBounds(250, 330, 100, 40);
+        jPanel2.add(jTextField1);
+        jTextField1.setBounds(130, 10, 180, 30);
 
         jLabel22.setText("Nombre d'exemplaire :");
         jPanel2.add(jLabel22);
@@ -256,8 +215,6 @@ public class GestionOuvrage extends javax.swing.JFrame {
         jTextField3.setBounds(130, 210, 190, 30);
         jPanel2.add(jTextField4);
         jTextField4.setBounds(130, 260, 190, 30);
-        jPanel2.add(jTextField5);
-        jTextField5.setBounds(360, 70, 320, 30);
 
         jLabel3.setText("Prenom auteur:");
         jPanel2.add(jLabel3);
@@ -292,10 +249,6 @@ public class GestionOuvrage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 private Ouvrage getParam() {
         Ouvrage ouvrage = new Ouvrage();
         try {
@@ -311,19 +264,29 @@ private Ouvrage getParam() {
         return ouvrage;
 
     }
-private Auteur getParame(){
+private Ouvrage getParame(){
+    Ouvrage ouvrage = new Ouvrage();
     Auteur auteur = new Auteur();
+    ouvrage.setNom(jTextField1.getText());
     auteur.setNom(jTextField6.getText());
     auteur.setPrenom(jTextField7.getText());
-    return auteur;
+ //   ouvrage.setDateEdition(new SimpleDateFormat(jTextField2.getText()));
+    ouvrage.setNbrPage(new Integer(jTextField3.getText()));
+    ouvrage.setNbrExplaire(new Integer(jTextField4.getText()));
+    
+   
+    return ouvrage;
     
 }
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        auteurFacade.create(getParame());
-        ouvrageFacade.create(getParam());
-        
+        Ouvrage ouvrage= getParame();
+        ouvrageFacade.create(ouvrage);
+
         JOptionPane.showMessageDialog(null, " ouvrage  bien ajouter", "Ajout avec succes", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -344,20 +307,21 @@ private Auteur getParame(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionOuvrage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OuvrageCreateView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionOuvrage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OuvrageCreateView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionOuvrage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OuvrageCreateView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionOuvrage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(OuvrageCreateView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionOuvrage().setVisible(true);
+                new OuvrageCreateView().setVisible(true);
             }
         });
     }
@@ -366,10 +330,6 @@ private Auteur getParame(){
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -398,13 +358,10 @@ private Auteur getParame(){
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private java.awt.TextField textField3;
