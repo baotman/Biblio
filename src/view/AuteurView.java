@@ -6,6 +6,7 @@
 package view;
 
 import bean.Auteur;
+import helper.AuteurHelper;
 import java.text.ParseException;
 import javax.swing.JOptionPane;
 import service.AuteurFacade;
@@ -15,13 +16,20 @@ import service.AuteurFacade;
  * @author hp
  */
 public class AuteurView extends javax.swing.JFrame {
+
     AuteurFacade auteurFacade = new AuteurFacade();
+    AuteurHelper auteurHelper;
 
     /**
      * Creates new form GestionAuteur
      */
     public AuteurView() {
         initComponents();
+        initAuteurHelper();
+    }
+
+    private void initAuteurHelper() {
+        auteurHelper = new AuteurHelper(jTable1, auteurFacade.findAll());
     }
 
     /**
@@ -43,6 +51,8 @@ public class AuteurView extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,11 +62,11 @@ public class AuteurView extends javax.swing.JFrame {
 
         jLabel1.setText("Nom :");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(20, 50, 80, 30);
+        jLabel1.setBounds(10, 80, 80, 30);
 
         jLabel2.setText("Prenom :");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 110, 80, 30);
+        jLabel2.setBounds(10, 140, 80, 30);
 
         jButton1.setText("Ajouter");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -96,14 +106,27 @@ public class AuteurView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(400, 70, 290, 140);
         jPanel1.add(jTextField1);
-        jTextField1.setBounds(150, 50, 200, 30);
+        jTextField1.setBounds(140, 80, 200, 30);
         jPanel1.add(jTextField2);
-        jTextField2.setBounds(150, 110, 210, 30);
+        jTextField2.setBounds(140, 140, 210, 30);
+
+        jTextField3.setEditable(false);
+        jPanel1.add(jTextField3);
+        jTextField3.setBounds(140, 30, 200, 30);
+
+        jLabel3.setText("ID :");
+        jPanel1.add(jLabel3);
+        jLabel3.setBounds(10, 30, 80, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,22 +144,42 @@ public class AuteurView extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        Auteur auteur = getParam();
+        auteurFacade.edit(auteur);
+        auteurHelper.edit(auteur);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        Auteur auteur = getParam();
+        auteurFacade.remove(auteur);
+        auteurHelper.remove(auteur);
+
     }//GEN-LAST:event_jButton3ActionPerformed
-private Auteur getParam(){
-    Auteur auteur = new Auteur();
-    auteur.setNom(jTextField1.getText());
-    auteur.setPrenom(jTextField2.getText());
-    return auteur;
-}
+    private Auteur getParam() {
+        Auteur auteur = new Auteur();
+        auteur.setNom(jTextField1.getText());
+        auteur.setPrenom(jTextField2.getText());
+        auteur.setId(new Long(jTextField3.getText()));
+        return auteur;
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        auteurFacade.create(getParam());
+        Auteur auteur = getParam();
+        auteurFacade.create(auteur);
+        auteurHelper.create(auteur);
         JOptionPane.showMessageDialog(null, "un auteur est bien ajouter", "Ajout avec succes", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void setParam(Auteur auteur) {
+        jTextField1.setText(auteur.getNom());
+        jTextField2.setText(auteur.getPrenom());
+        jTextField3.setText(auteur.getId() + "");
+    }
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        setParam(auteurHelper.getSelected());
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -180,10 +223,12 @@ private Auteur getParam(){
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
