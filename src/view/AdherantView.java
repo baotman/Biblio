@@ -1,12 +1,14 @@
 package view;
 
 import bean.Adherent;
+import helper.AdherentHelper;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import service.AdherentFacade;
+import util.DateUtil;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -20,12 +22,18 @@ import service.AdherentFacade;
 public class AdherantView extends javax.swing.JFrame {
 
     AdherentFacade adherentFacade = new AdherentFacade();
+    AdherentHelper adherentHelper;
 
     /**
      * Creates new form GestionAdherant
      */
     public AdherantView() {
         initComponents();
+        initAdherentHelper();
+    }
+
+    private void initAdherentHelper() {
+        adherentHelper = new AdherentHelper(jTable1, adherentFacade.findAll());
     }
 
     /**
@@ -72,7 +80,7 @@ public class AdherantView extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
@@ -82,6 +90,8 @@ public class AdherantView extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jLabel22 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
 
@@ -93,19 +103,19 @@ public class AdherantView extends javax.swing.JFrame {
 
         jLabel3.setText("Nom :");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(10, 30, 60, 30);
+        jLabel3.setBounds(30, 50, 60, 30);
 
         jLabel4.setText("Prénom :");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(10, 70, 70, 40);
+        jLabel4.setBounds(20, 90, 70, 40);
 
         jLabel5.setText("Date naissance :");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(10, 120, 110, 30);
+        jLabel5.setBounds(10, 140, 110, 30);
 
         jLabel6.setText("tel :");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(20, 220, 70, 40);
+        jLabel6.setBounds(30, 240, 70, 40);
 
         jPanel3.setLayout(null);
 
@@ -206,11 +216,21 @@ public class AdherantView extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton2.setText("Modifier");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton2);
         jButton2.setBounds(160, 320, 100, 30);
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setText("Suprimer");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton3);
         jButton3.setBounds(290, 320, 110, 30);
 
@@ -225,6 +245,11 @@ public class AdherantView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         jPanel2.add(jScrollPane1);
@@ -234,9 +259,9 @@ public class AdherantView extends javax.swing.JFrame {
         jPanel2.add(jLabel1);
         jLabel1.setBounds(450, 10, 130, 50);
         jPanel2.add(jTextField1);
-        jTextField1.setBounds(130, 20, 220, 40);
+        jTextField1.setBounds(130, 50, 220, 30);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "identifiant", "nom", "tout afficher", "" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "identifiant", "nom", "tout afficher", "" }));
         jPanel2.add(jComboBox1);
         jComboBox1.setBounds(580, 20, 140, 30);
 
@@ -249,21 +274,30 @@ public class AdherantView extends javax.swing.JFrame {
         jPanel2.add(jButton5);
         jButton5.setBounds(140, 380, 100, 23);
         jPanel2.add(jTextField2);
-        jTextField2.setBounds(130, 70, 220, 40);
+        jTextField2.setBounds(130, 90, 220, 40);
         jPanel2.add(jTextField3);
-        jTextField3.setBounds(130, 120, 220, 40);
+        jTextField3.setBounds(130, 140, 220, 40);
         jPanel2.add(jTextField4);
-        jTextField4.setBounds(130, 220, 220, 40);
+        jTextField4.setBounds(120, 240, 220, 40);
         jPanel2.add(jTextField5);
         jTextField5.setBounds(420, 70, 380, 30);
 
         jLabel2.setText("Adresse :");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(20, 174, 60, 30);
+        jLabel2.setBounds(20, 190, 60, 30);
         jPanel2.add(jTextField6);
-        jTextField6.setBounds(130, 170, 220, 40);
+        jTextField6.setBounds(130, 190, 220, 40);
         jPanel2.add(jTabbedPane1);
         jTabbedPane1.setBounds(730, 110, 5, 5);
+
+        jLabel22.setText("ID :");
+        jPanel2.add(jLabel22);
+        jLabel22.setBounds(20, 20, 18, 14);
+
+        jTextField7.setEditable(false);
+        jTextField7.setEnabled(false);
+        jPanel2.add(jTextField7);
+        jTextField7.setBounds(130, 10, 220, 30);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -295,26 +329,53 @@ public class AdherantView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private Adherent getParam() {
+    private Adherent getParam(boolean getId) {
         Adherent adherent = new Adherent();
-        try {
-            adherent.setNom(jTextField1.getText());
-            adherent.setPrenom(jTextField2.getText());
-            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyyy");
-            adherent.setDateNaissance(simpleDateFormat.parse(jTextField3.getText()));
-            adherent.setAdresse(jTextField6.getText());
-            adherent.setNumTel(jTextField4.getText());
-
-        } catch (ParseException ex) {
+        if (getId == true) {
+            adherent.setId(new Long(jTextField7.getText()));
         }
+        adherent.setNom(jTextField1.getText());
+        adherent.setPrenom(jTextField2.getText());
+        adherent.setDateNaissance(DateUtil.parseDate(jTextField3.getText()));
+        adherent.setAdresse(jTextField6.getText());
+        adherent.setNumTel(jTextField4.getText());
         return adherent;
 
     }
+
+    private void setParam(Adherent adherent) {
+        jTextField7.setText(adherent.getId() + "");
+        jTextField1.setText(adherent.getNom());
+        jTextField3.setText(DateUtil.formateDate(adherent.getDateNaissance()));
+        jTextField2.setText(adherent.getPrenom());
+        jTextField6.setText(adherent.getAdresse());
+        jTextField4.setText(adherent.getNumTel());
+    }
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         adherentFacade.create(getParam());
-         JOptionPane.showMessageDialog(null, "votre adherent est bien ajouter", "Ajout avec succes", JOptionPane.INFORMATION_MESSAGE);
-          
+        Adherent adherent= getParam(false);
+        adherentFacade.create(adherent);
+        adherentHelper.create(adherent);
+        JOptionPane.showMessageDialog(null, "l'adherent est bien ajouter", "Ajout avec succes", JOptionPane.INFORMATION_MESSAGE);
+
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        setParam(adherentHelper.getSelected());
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Adherent adherent = getParam(true);
+        adherentFacade.edit(adherent);
+        adherentHelper.edit(adherent);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        Adherent adherent = getParam(true);
+        adherentFacade.remove(adherent);
+        adherentHelper.remove(adherent);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -373,6 +434,7 @@ public class AdherantView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -396,6 +458,7 @@ public class AdherantView extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     private java.awt.TextField textField1;
     private java.awt.TextField textField3;
     private java.awt.TextField textField4;
