@@ -6,10 +6,12 @@ package helper;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 import util.DaoEngigne;
+import util.DateUtil;
 
 /**
  *
@@ -121,7 +123,11 @@ public abstract class AbstractHelper<T> extends AbstractTableModel {
                 if (columnIndex == i) {
                     System.out.println("ana daba f i ==> "+i);
                     try {
-                        return DaoEngigne.lunchGetterByParamName(list.get(rowIndex), abstractHelperItem[i].getAttributeName());
+                        Object res= DaoEngigne.lunchGetterByParamName(list.get(rowIndex), abstractHelperItem[i].getAttributeName());
+                        if(res instanceof Date){
+                           return DateUtil.formateDate("dd-MM-yyyyy",(Date)res);
+                        }
+                        return res;
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
