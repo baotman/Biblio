@@ -17,14 +17,14 @@ import service.AdherentFacade;
  *
  * @author farah
  */
-public class GestionAdherant extends javax.swing.JFrame {
+public class AdherantView extends javax.swing.JFrame {
 
     AdherentFacade adherentFacade = new AdherentFacade();
 
     /**
      * Creates new form GestionAdherant
      */
-    public GestionAdherant() {
+    public AdherantView() {
         initComponents();
     }
 
@@ -263,7 +263,7 @@ public class GestionAdherant extends javax.swing.JFrame {
         jPanel2.add(jTextField6);
         jTextField6.setBounds(130, 170, 220, 40);
         jPanel2.add(jTabbedPane1);
-        jTabbedPane1.setBounds(730, 110, 100, 100);
+        jTabbedPane1.setBounds(730, 110, 5, 5);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -333,20 +333,21 @@ public class GestionAdherant extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionAdherant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdherantView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionAdherant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdherantView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionAdherant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdherantView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionAdherant.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdherantView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionAdherant().setVisible(true);
+                new AdherantView().setVisible(true);
             }
         });
     }

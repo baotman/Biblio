@@ -14,13 +14,13 @@ import service.AuteurFacade;
  *
  * @author hp
  */
-public class GestionAuteur extends javax.swing.JFrame {
+public class AuteurView extends javax.swing.JFrame {
     AuteurFacade auteurFacade = new AuteurFacade();
 
     /**
      * Creates new form GestionAuteur
      */
-    public GestionAuteur() {
+    public AuteurView() {
         initComponents();
     }
 
@@ -155,20 +155,21 @@ private Auteur getParam(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GestionAuteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuteurView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GestionAuteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuteurView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GestionAuteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuteurView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GestionAuteur.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AuteurView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GestionAuteur().setVisible(true);
+                new AuteurView().setVisible(true);
             }
         });
     }
