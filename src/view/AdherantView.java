@@ -281,7 +281,7 @@ public class AdherantView extends javax.swing.JFrame {
         jPanel2.add(jTextField2);
         jTextField2.setBounds(130, 90, 220, 40);
         jPanel2.add(jTextField3);
-        jTextField3.setBounds(130, 140, 220, 40);
+        jTextField3.setBounds(130, 150, 220, 40);
         jPanel2.add(jTextField4);
         jTextField4.setBounds(120, 240, 220, 40);
         jPanel2.add(jTextField5);
@@ -291,7 +291,7 @@ public class AdherantView extends javax.swing.JFrame {
         jPanel2.add(jLabel2);
         jLabel2.setBounds(20, 190, 60, 30);
         jPanel2.add(jTextField6);
-        jTextField6.setBounds(130, 190, 220, 40);
+        jTextField6.setBounds(130, 200, 210, 30);
         jPanel2.add(jTabbedPane1);
         jTabbedPane1.setBounds(730, 110, 5, 5);
 
@@ -373,6 +373,7 @@ public class AdherantView extends javax.swing.JFrame {
         Adherent adherent = getParam(true);
         adherentFacade.edit(adherent);
         adherentHelper.edit(adherent);
+        JOptionPane.showMessageDialog(null, "l'adherent est bien modifier", "Ajout avec succes", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -380,6 +381,8 @@ public class AdherantView extends javax.swing.JFrame {
         Adherent adherent = getParam(true);
         adherentFacade.remove(adherent);
         adherentHelper.remove(adherent);
+        JOptionPane.showMessageDialog(null, "l'adherent est bien suprimer", "Ajout avec succes", JOptionPane.INFORMATION_MESSAGE);
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
