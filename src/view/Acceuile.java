@@ -47,31 +47,34 @@ public class Acceuile extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Fournisseur.png"))); // NOI18N
+        jButton1.setText("Gestion des adherants");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(150, 40, 260, 60);
+        jButton1.setBounds(10, 20, 193, 60);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/Activite.png"))); // NOI18N
+        jButton2.setText("Gestion des Ouvrages");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton2);
-        jButton2.setBounds(150, 110, 260, 60);
+        jButton2.setBounds(10, 100, 210, 60);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/1460471498_Articles.png"))); // NOI18N
+        jButton3.setText("Gestion des Emprunts");
         jPanel1.add(jButton3);
-        jButton3.setBounds(150, 180, 260, 60);
+        jButton3.setBounds(10, 250, 200, 60);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/romans.jpg"))); // NOI18N
-        jButton4.setText("jButton4");
+        jButton4.setIcon(new javax.swing.ImageIcon("C:\\Users\\farah\\Documents\\NetBeansProjects\\FirstProjet\\src\\icons\\1460471498_Articles.png")); // NOI18N
+        jButton4.setText("Gestion des Reservations");
         jPanel1.add(jButton4);
-        jButton4.setBounds(150, 250, 260, 50);
+        jButton4.setBounds(10, 180, 230, 50);
 
         jMenu1.setText("Acceuil");
         jMenuBar1.add(jMenu1);
@@ -98,10 +101,7 @@ public class Acceuile extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
         );
 
         pack();
