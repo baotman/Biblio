@@ -37,8 +37,7 @@ public class ReservationItem implements Serializable {
         this.id = id;
     }
 
-    public ReservationItem(Long id, Ouvrage ouvrage, String description) {
-        this.id = id;
+    public ReservationItem( Ouvrage ouvrage, String description) {
         this.ouvrage = ouvrage;
         this.description = description;
     }
