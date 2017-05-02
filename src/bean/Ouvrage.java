@@ -35,6 +35,8 @@ public class Ouvrage implements Serializable {
     private Date dateEdition;
     private int nbrPage;
     private int nbrExplaire;
+      @ManyToOne
+    private Auteur auteur;
     @OneToMany(mappedBy = "ouvrage")
     private List<ReservationItem> reservationItems;
 
@@ -63,8 +65,7 @@ public class Ouvrage implements Serializable {
         this.reservationItems = reservationItems;
     }
     
-    @ManyToOne
-    private Auteur auteur;
+  
 
     public String getNom() {
         return nom;

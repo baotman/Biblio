@@ -272,6 +272,8 @@ public class OuvrageCreateView extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         ouvrageFacade.create(getParam(true));
+        OuvrageListView ouvrageListView=new OuvrageListView();
+        ouvrageListView.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -304,7 +306,7 @@ public class OuvrageCreateView extends javax.swing.JFrame {
         jTextField1.setText(ouvrage.getNom() + "");
     }
     
-    private Ouvrage getParame(boolean getId) {
+     private Ouvrage getParame(boolean getId) {
         Ouvrage ouvrage = new Ouvrage();
         if (getId) {
             ouvrage.setId(jTextField5.getText());

@@ -80,7 +80,7 @@ public class AdherantView extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
@@ -261,11 +261,16 @@ public class AdherantView extends javax.swing.JFrame {
         jPanel2.add(jTextField1);
         jTextField1.setBounds(130, 50, 220, 30);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "identifiant", "nom", "tout afficher", "" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "identifiant", "nom", "tout afficher", "" }));
         jPanel2.add(jComboBox1);
         jComboBox1.setBounds(580, 20, 140, 30);
 
         jButton4.setText("Rechercher");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton4);
         jButton4.setBounds(530, 130, 180, 40);
 
@@ -376,6 +381,10 @@ public class AdherantView extends javax.swing.JFrame {
         adherentFacade.remove(adherent);
         adherentHelper.remove(adherent);
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -240,6 +240,11 @@ public class OuvrageView extends javax.swing.JFrame {
         jComboBox1.setBounds(530, 20, 110, 30);
 
         jButton4.setText("Rechercher");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton4);
         jButton4.setBounds(390, 110, 140, 23);
 
@@ -326,6 +331,10 @@ private Auteur getParame(){
         
         JOptionPane.showMessageDialog(null, " ouvrage  bien ajouter", "Ajout avec succes", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

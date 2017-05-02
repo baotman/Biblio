@@ -173,7 +173,7 @@ public class OuvrageListView extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        ouvrageHelper.setList(ouvrageFacade.findAll());
+       ouvrageHelper.setList(ouvrageFacade.search( jTextField5.getText() , ""+jComboBox1.getSelectedItem()));
     }//GEN-LAST:event_jButton4ActionPerformed
 
     public static void main(String args[]) {

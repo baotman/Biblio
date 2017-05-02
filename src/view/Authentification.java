@@ -107,6 +107,7 @@ public class Authentification extends javax.swing.JFrame {
         } else if (res == -2) {
             JOptionPane.showMessageDialog(null, "password invalide", "authentification echec", JOptionPane.ERROR_MESSAGE);
         }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -140,6 +141,7 @@ public class Authentification extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Authentification().setVisible(true);
+               
             }
         });
     }
