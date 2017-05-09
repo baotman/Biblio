@@ -6,6 +6,7 @@ import static bean.Ouvrage_.auteur;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import javax.swing.JOptionPane;
 import service.AuteurFacade;
 import service.OuvrageFacade;
 import util.DateUtil;
@@ -76,8 +77,6 @@ public class OuvrageCreateView extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         textField5 = new java.awt.TextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -88,26 +87,30 @@ public class OuvrageCreateView extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel2.setBackground(new java.awt.Color(102, 0, 0));
         jPanel2.setEnabled(false);
         jPanel2.setLayout(null);
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nom ouvrage :");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(30, 70, 80, 20);
+        jLabel2.setBounds(60, 160, 120, 30);
 
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Date Edition :");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(30, 210, 90, 30);
+        jLabel4.setBounds(60, 260, 120, 50);
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nombre de page :");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(30, 260, 90, 30);
+        jLabel5.setBounds(60, 320, 140, 40);
 
         jPanel3.setLayout(null);
 
@@ -195,46 +198,33 @@ public class OuvrageCreateView extends javax.swing.JFrame {
 
         jPanel2.add(jPanel4);
         jPanel4.setBounds(0, 0, 0, 0);
-
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton1);
-        jButton1.setBounds(350, 10, 30, 40);
-
-        jButton2.setText("Modifier");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton2);
-        jButton2.setBounds(170, 380, 90, 40);
         jPanel2.add(jTextField1);
-        jTextField1.setBounds(150, 60, 180, 30);
+        jTextField1.setBounds(190, 160, 190, 30);
 
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Nombre d'exemplaire :");
         jPanel2.add(jLabel22);
-        jLabel22.setBounds(20, 320, 120, 20);
+        jLabel22.setBounds(50, 370, 130, 30);
         jPanel2.add(jTextField2);
-        jTextField2.setBounds(150, 210, 180, 40);
+        jTextField2.setBounds(190, 270, 200, 30);
         jPanel2.add(jTextField3);
-        jTextField3.setBounds(150, 260, 190, 30);
+        jTextField3.setBounds(190, 320, 200, 30);
         jPanel2.add(jTextField4);
-        jTextField4.setBounds(150, 310, 190, 30);
+        jTextField4.setBounds(180, 380, 210, 30);
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText(" auteur :");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(30, 120, 90, 40);
+        jLabel6.setBounds(60, 210, 90, 40);
         jPanel2.add(jTextField5);
-        jTextField5.setBounds(150, 10, 180, 30);
+        jTextField5.setBounds(190, 110, 190, 30);
 
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Id:");
         jPanel2.add(jLabel23);
-        jLabel23.setBounds(30, 20, 80, 20);
+        jLabel23.setBounds(60, 120, 80, 30);
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bookaddicon.png"))); // NOI18N
         jButton3.setText("Ajouter");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -242,27 +232,45 @@ public class OuvrageCreateView extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton3);
-        jButton3.setBounds(40, 380, 90, 40);
+        jButton3.setBounds(70, 450, 180, 50);
 
         jPanel2.add(jComboBox1);
-        jComboBox1.setBounds(150, 130, 180, 20);
+        jComboBox1.setBounds(190, 210, 190, 30);
 
-        jMenu1.setText("Gestion Des Ouvrages");
-        jMenuBar1.add(jMenu1);
-        jMenuBar1.add(jMenu2);
+        jLabel1.setFont(new java.awt.Font("Tahoma", 2, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 51, 51));
+        jLabel1.setText("Ajouter Ouvrage");
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(80, 10, 240, 50);
 
-        setJMenuBar(jMenuBar1);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/book39.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(450, 110, 270, 330);
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/deleteicon.png"))); // NOI18N
+        jButton4.setText("Close");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton4);
+        jButton4.setBounds(350, 450, 180, 50);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 773, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 740, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 544, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -271,21 +279,20 @@ public class OuvrageCreateView extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+         
+
+        
         ouvrageFacade.create(getParam(true));
-        OuvrageListView ouvrageListView=new OuvrageListView();
-        ouvrageListView.setVisible(true);
+        JOptionPane.showMessageDialog(null, "l'ouvrage est bien ajouter ", "Ajout avec succes", JOptionPane.INFORMATION_MESSAGE);
+        
+       // OuvrageListView ouvrageListView=new OuvrageListView();
+        //ouvrageListView.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Ouvrage ouvrage = getParame(true);
-        ouvrageFacade.edit(ouvrage);
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        setParam(ouvrageFacade.find(jTextField5.getText()));
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton4ActionPerformed
     private Ouvrage getParam(boolean getId) {
         Ouvrage ouvrage = new Ouvrage();
         if (getId) {
@@ -358,10 +365,10 @@ public class OuvrageCreateView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -377,15 +384,13 @@ public class OuvrageCreateView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

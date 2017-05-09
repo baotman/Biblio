@@ -37,8 +37,9 @@ public abstract class AbstractHelper<T> extends AbstractTableModel {
         this.list = list;
         jTable.setModel(this);
     }
-     public AbstractHelper(AbstractHelperItem[] abstractHelperItem, JTable jTable) {
-         List<T> myList = new ArrayList<>();
+
+    public AbstractHelper(AbstractHelperItem[] abstractHelperItem, JTable jTable) {
+        List<T> myList = new ArrayList<>();
         this.abstractHelperItem = abstractHelperItem;
         this.jTable = jTable;
         this.list = myList;
@@ -47,15 +48,15 @@ public abstract class AbstractHelper<T> extends AbstractTableModel {
 
     public void create(T t) {
         list.add(t);
-        for (int i = 0; i <  abstractHelperItem.length; i++) {
-            fireTableRowsInserted(abstractHelperItem.length- 1, i);
+        for (int i = 0; i < abstractHelperItem.length; i++) {
+            fireTableRowsInserted(abstractHelperItem.length - 1, i);
         }
     }
 
     public void remove(T t) {
         int selected = jTable.getSelectedRow();
         list.remove(selected);
-        for (int i = 0; i <  abstractHelperItem.length; i++) {
+        for (int i = 0; i < abstractHelperItem.length; i++) {
             fireTableRowsDeleted(selected, i);
 
         }
@@ -64,7 +65,7 @@ public abstract class AbstractHelper<T> extends AbstractTableModel {
     public void edit(T t) {
         int selected = jTable.getSelectedRow();
         list.set(selected, t);
-        for (int i = 0; i <  abstractHelperItem.length; i++) {
+        for (int i = 0; i < abstractHelperItem.length; i++) {
             fireTableRowsUpdated(selected, i);
         }
     }
@@ -103,7 +104,7 @@ public abstract class AbstractHelper<T> extends AbstractTableModel {
     }
 
     public T getValueAt(int rowIndex) {
-        if (list!=null && rowIndex < list.size()) {
+        if (list != null && rowIndex < list.size()) {
             return list.get(rowIndex);
         }
 
@@ -115,18 +116,16 @@ public abstract class AbstractHelper<T> extends AbstractTableModel {
         return abstractHelperItem[columnIndex].getColumnName();
     }
 
-    
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        if (list!=null && rowIndex < list.size()) {
+        if (list != null && rowIndex < list.size()) {
             for (int i = 0; i < abstractHelperItem.length; i++) {
                 if (columnIndex == i) {
-                    System.out.println("ana daba f i ==> "+i);
                     try {
-                        Object res= DaoEngigne.lunchGetterByParamName(list.get(rowIndex), abstractHelperItem[i].getAttributeName());
-                        if(res instanceof Date){
-                           return DateUtil.formateDate("dd-MM-yyyyy",(Date)res);
-                        }
+                        Object res = DaoEngigne.lunchGetterByParamName(list.get(rowIndex), abstractHelperItem[i].getAttributeName());
+                        if (res instanceof Date) {
+                            return DateUtil.formateDate("dd-MM-yyyyy", (Date) res);
+                        } 
                         return res;
                     } catch (Exception ex) {
                         ex.printStackTrace();

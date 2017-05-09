@@ -5,17 +5,38 @@
  */
 package view;
 
+import helper.ReservationHelper;
+import helper.ReservationItemHelper;
+import service.ReservationFacade;
+import service.ReservationItemFacade;
+
 /**
  *
  * @author farah
  */
 public class ReservationListView extends javax.swing.JFrame {
 
+    ReservationItemFacade reservationItemFacade = new ReservationItemFacade();
+    ReservationFacade reservationFacade = new ReservationFacade();
+    ReservationItemHelper reservationItemHelper;
+    ReservationHelper reservationHelper;
+
     /**
      * Creates new form ReservationListView
      */
     public ReservationListView() {
         initComponents();
+        initReservationItemHelper();
+        initReservationHelper();
+    }
+
+    private void initReservationItemHelper() {
+        reservationItemHelper = new ReservationItemHelper(jTable2);
+
+    }
+
+    private void initReservationHelper() {
+        reservationHelper = new ReservationHelper(jTable1, reservationFacade.findAll());
     }
 
     /**
@@ -91,7 +112,7 @@ public class ReservationListView extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
-       // helper2.setList(resrVationItemFacade.findByReservation(helper1.getSelected()))
+        reservationItemHelper.setList(reservationItemFacade.findByReservation(reservationHelper.getSelected()));
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**

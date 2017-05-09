@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package service;
+
+import bean.Categorie;
 import bean.Ouvrage;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,23 +16,28 @@ import util.SearchUtil;
  * @author hp
  */
 public class OuvrageFacade extends AbstractFacade<Ouvrage> {
-public List<Ouvrage> search(String input, String choix) {
+
+    public List<Ouvrage> search(String id, String nom, Categorie categorie) {
         String requette = "SELECT ad FROM Ouvrage ad WHERE 1=1";
-        List<Ouvrage> ouvrages = new ArrayList<>();
-        
-        if (choix.equals("identifiant") ) {
-            requette += SearchUtil.addConstraint("ad", "id", "=", input);
-            ouvrages= getEntityManager().createQuery(requette).getResultList();
-        } else if (choix.equals("auteur")) {
-            requette += SearchUtil.addConstraint("ad", "nom", "=", input);
-            ouvrages= getEntityManager().createQuery(requette).getResultList();
-        } else if (choix.equals("tout afficher")) {
-            ouvrages = findAll() ;
+
+        requette += SearchUtil.addConstraint("ad", "id", "=", id);
+        requette += SearchUtil.addConstraint("ad", "nom", "LIKE", nom);
+        if (categorie != null && categorie.getId() != null) {
+            requette += SearchUtil.addConstraint("ad", "categorie.id", "=", categorie.getId());
         }
-        return ouvrages ;
+
+        return getEntityManager().createQuery(requette).getResultList();
+
     }
-    public OuvrageFacade() {
-          super(Ouvrage.class);
+
+    public List<Ouvrage> findByCategorie(Categorie categorie) {
+        return search(null, null, categorie);
     }
+ 
     
+
+    public OuvrageFacade() {
+        super(Ouvrage.class);
+    }
+
 }

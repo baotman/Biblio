@@ -65,28 +65,19 @@ public class OuvrageView extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         textField5 = new java.awt.TextField();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jLabel22 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jTextField7 = new javax.swing.JTextField();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,15 +85,15 @@ public class OuvrageView extends javax.swing.JFrame {
 
         jLabel2.setText("Nom ouvrage :");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(10, 20, 80, 20);
+        jLabel2.setBounds(20, 50, 80, 20);
 
         jLabel4.setText("Date Edition :");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(10, 160, 90, 30);
+        jLabel4.setBounds(20, 210, 90, 30);
 
         jLabel5.setText("Nombre de page :");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(10, 210, 90, 30);
+        jLabel5.setBounds(20, 270, 100, 30);
 
         jPanel3.setLayout(null);
 
@@ -191,22 +182,9 @@ public class OuvrageView extends javax.swing.JFrame {
         jPanel2.add(jPanel4);
         jPanel4.setBounds(0, 0, 0, 0);
 
-        jButton1.setText("Ajouter");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton1);
-        jButton1.setBounds(20, 330, 90, 40);
-
         jButton2.setText("Modifier");
         jPanel2.add(jButton2);
-        jButton2.setBounds(130, 330, 90, 40);
-
-        jButton3.setText("Suprimer");
-        jPanel2.add(jButton3);
-        jButton3.setBounds(250, 330, 100, 40);
+        jButton2.setBounds(150, 380, 140, 40);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -222,31 +200,9 @@ public class OuvrageView extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(360, 170, 390, 140);
-
-        jLabel1.setText("Recherche par:");
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(380, 30, 90, 14);
+        jScrollPane1.setBounds(350, 190, 390, 140);
         jPanel2.add(jTextField1);
-        jTextField1.setBounds(130, 20, 180, 30);
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "identifiant", "auteur", "tout afficher", "" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jComboBox1);
-        jComboBox1.setBounds(530, 20, 110, 30);
-
-        jButton4.setText("Rechercher");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton4);
-        jButton4.setBounds(390, 110, 140, 23);
+        jTextField1.setBounds(120, 40, 180, 40);
 
         jButton5.setText("Actualiser");
         jPanel2.add(jButton5);
@@ -254,33 +210,25 @@ public class OuvrageView extends javax.swing.JFrame {
 
         jLabel22.setText("Nombre d'exemplaire :");
         jPanel2.add(jLabel22);
-        jLabel22.setBounds(0, 270, 120, 20);
+        jLabel22.setBounds(10, 320, 110, 30);
         jPanel2.add(jTextField2);
-        jTextField2.setBounds(130, 160, 180, 40);
+        jTextField2.setBounds(120, 200, 180, 40);
         jPanel2.add(jTextField3);
-        jTextField3.setBounds(130, 210, 190, 30);
+        jTextField3.setBounds(130, 260, 170, 40);
         jPanel2.add(jTextField4);
-        jTextField4.setBounds(130, 260, 190, 30);
-        jPanel2.add(jTextField5);
-        jTextField5.setBounds(360, 70, 320, 30);
+        jTextField4.setBounds(130, 310, 170, 40);
 
         jLabel3.setText("Prenom auteur:");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(10, 120, 100, 20);
+        jLabel3.setBounds(10, 140, 100, 30);
         jPanel2.add(jTextField6);
-        jTextField6.setBounds(130, 60, 180, 30);
+        jTextField6.setBounds(120, 90, 180, 40);
 
         jLabel6.setText("Nom auteur :");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(13, 54, 90, 40);
+        jLabel6.setBounds(20, 90, 90, 40);
         jPanel2.add(jTextField7);
-        jTextField7.setBounds(130, 110, 180, 30);
-
-        jMenu1.setText("Gestion Des Ouvrages");
-        jMenuBar1.add(jMenu1);
-        jMenuBar1.add(jMenu2);
-
-        setJMenuBar(jMenuBar1);
+        jTextField7.setBounds(120, 140, 180, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -291,16 +239,12 @@ public class OuvrageView extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
 private Ouvrage getParam() {
         Ouvrage ouvrage = new Ouvrage();
         try {
@@ -323,19 +267,6 @@ private Auteur getParame(){
     return auteur;
     
 }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        auteurFacade.create(getParame());
-        ouvrageFacade.create(getParam());
-        
-        JOptionPane.showMessageDialog(null, " ouvrage  bien ajouter", "Ajout avec succes", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -373,13 +304,8 @@ private Auteur getParame(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -401,9 +327,6 @@ private Auteur getParame(){
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -414,7 +337,6 @@ private Auteur getParame(){
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private java.awt.TextField textField3;

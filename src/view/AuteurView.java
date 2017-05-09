@@ -42,8 +42,6 @@ public class AuteurView extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -60,6 +58,7 @@ public class AuteurView extends javax.swing.JFrame {
         jTextField9 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,24 +66,7 @@ public class AuteurView extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestion Auteur", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(51, 51, 255))); // NOI18N
         jPanel1.setLayout(null);
 
-        jButton1.setText("Ajouter");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton1);
-        jButton1.setBounds(20, 210, 80, 30);
-
-        jButton2.setText("Modifier");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(100, 210, 80, 30);
-
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/DeleteAdherent.png"))); // NOI18N
         jButton3.setText("Suprimer");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,7 +74,7 @@ public class AuteurView extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton3);
-        jButton3.setBounds(180, 210, 80, 30);
+        jButton3.setBounds(130, 340, 140, 40);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -113,7 +95,7 @@ public class AuteurView extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(320, 100, 460, 180);
+        jScrollPane1.setBounds(290, 120, 480, 180);
 
         jLabel4.setText("ID :");
         jPanel1.add(jLabel4);
@@ -122,6 +104,12 @@ public class AuteurView extends javax.swing.JFrame {
         jTextField4.setEditable(false);
         jPanel1.add(jTextField4);
         jTextField4.setBounds(140, 30, 130, 30);
+
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jTextField5);
         jTextField5.setBounds(140, 80, 130, 30);
 
@@ -135,24 +123,25 @@ public class AuteurView extends javax.swing.JFrame {
         jPanel1.add(jTextField6);
         jTextField6.setBounds(140, 140, 130, 30);
         jPanel1.add(jTextField7);
-        jTextField7.setBounds(430, 20, 100, 30);
+        jTextField7.setBounds(390, 20, 140, 30);
 
         jLabel7.setText("ID :");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(390, 20, 80, 30);
+        jLabel7.setBounds(330, 30, 80, 30);
         jPanel1.add(jTextField8);
-        jTextField8.setBounds(650, 20, 90, 30);
+        jTextField8.setBounds(620, 20, 130, 30);
 
         jLabel8.setText("Nom :");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(600, 20, 40, 30);
+        jLabel8.setBounds(570, 20, 40, 30);
         jPanel1.add(jTextField9);
-        jTextField9.setBounds(430, 60, 100, 30);
+        jTextField9.setBounds(390, 70, 140, 30);
 
         jLabel9.setText("Prenom :");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(360, 60, 60, 30);
+        jLabel9.setBounds(330, 70, 60, 30);
 
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/rechercher.png"))); // NOI18N
         jButton4.setText("Recherche");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,7 +149,17 @@ public class AuteurView extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(650, 70, 90, 23);
+        jButton4.setBounds(590, 70, 140, 40);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/deleteicon.png"))); // NOI18N
+        jButton1.setText("Fermer");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1);
+        jButton1.setBounds(560, 340, 140, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,18 +169,11 @@ public class AuteurView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 343, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        Auteur auteur = getParam();
-        auteurFacade.edit(auteur);
-        auteurHelper.edit(auteur);
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -192,23 +184,15 @@ public class AuteurView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
     private Auteur getParam() {
         Auteur auteur = new Auteur();
-        auteur.setNom(jTextField4.getText());
-        auteur.setPrenom(jTextField5.getText());
-        auteur.setId(new Long(jTextField6.getText()));
+        auteur.setNom(jTextField5.getText());
+        auteur.setPrenom(jTextField6.getText());
+        auteur.setId(new Long(jTextField4.getText()));
         return auteur;
     }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        Auteur auteur = getParam();
-        auteurFacade.create(auteur);
-        auteurHelper.create(auteur);
-        JOptionPane.showMessageDialog(null, "un auteur est bien ajouter", "Ajout avec succes", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void setParam(Auteur auteur) {
-        jTextField4.setText(auteur.getNom());
-        jTextField5.setText(auteur.getPrenom());
-        jTextField6.setText(auteur.getId() + "");
+        jTextField5.setText(auteur.getNom());
+        jTextField6.setText(auteur.getPrenom());
+        jTextField4.setText(auteur.getId() + "");
     }
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
@@ -219,6 +203,15 @@ public class AuteurView extends javax.swing.JFrame {
         // TODO add your handling code here:
         auteurHelper.setList(auteurFacade.search(jTextField7.getText(), jTextField8.getText(), jTextField9.getText()));
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,7 +251,6 @@ public class AuteurView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel4;

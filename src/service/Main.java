@@ -16,7 +16,7 @@ import javax.naming.ldap.ManageReferralControl;
 public class Main {
 
     public static void main(String[] args) {
-        initManagerBiblio();
+      //  initManagerBiblio();
 
     }
   private static void initManagerBiblio() {

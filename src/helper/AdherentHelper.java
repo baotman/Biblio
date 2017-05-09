@@ -22,7 +22,7 @@ public class AdherentHelper extends AbstractHelper<Adherent> {
             new AbstractHelperItem("ID  ", "id"),
             new AbstractHelperItem("NOM", "nom"),
             new AbstractHelperItem("PRENOM", "prenom"),
-          new AbstractHelperItem("PRENOM", "numTel"),
+          new AbstractHelperItem("NUMTEL", "numTel"),
           new AbstractHelperItem("Date naissance", "dateNaissance"),
              new AbstractHelperItem("Adresse", "adresse"),
     };

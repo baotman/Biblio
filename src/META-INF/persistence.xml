@@ -12,6 +12,7 @@
     <class>bean.ManagerBiblio</class>
     <class>service.AdherentFacade</class>
     <class>bean.jjj</class>
+    <class>bean.Categorie</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/biblio_v1?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

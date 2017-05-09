@@ -6,6 +6,7 @@
 package view;
 
 import bean.Adherent;
+import bean.Categorie;
 import bean.Ouvrage;
 import bean.Reservation;
 import bean.ReservationItem;
@@ -13,9 +14,11 @@ import helper.OuvrageHelper;
 import java.util.ArrayList;
 import java.util.List;
 import service.AdherentFacade;
+import service.CategorieFacade;
 import service.OuvrageFacade;
 import service.ReservationFacade;
 import util.DateUtil;
+import util.JComboBoxUtil;
 
 /**
  *
@@ -24,26 +27,29 @@ import util.DateUtil;
 public class ReservationView extends javax.swing.JFrame {
 
     private OuvrageHelper ouvrageHelper;
-     List<Ouvrage> ouvrages;
-     List<Adherent> adherents ;
-     List<ReservationItem> reservationItems= new ArrayList() ;
-     Reservation reservation =new Reservation();
-    
-    private void initHelper(){
-        ouvrageHelper= new OuvrageHelper(jTable2);
+    List<Ouvrage> ouvrages;
+    List<Categorie> categories;
+    List<Adherent> adherents;
+    List<ReservationItem> reservationItems = new ArrayList();
+    Reservation reservation = new Reservation();
+    CategorieFacade categorieFacade = new CategorieFacade();
+
+    private void initHelper() {
+        ouvrageHelper = new OuvrageHelper(jTable2);
     }
-    
-    private void getParam(){
+
+    private void getParam() {
         reservation.setDateResvation(DateUtil.parseDate(jTextField4.getText()));
-        reservation.setAdherent(adherents.get(jComboBox1.getSelectedIndex()-1));
+        reservation.setAdherent(adherents.get(jComboBox1.getSelectedIndex() - 1));
     }
+
     /**
      * Creates new form GestionReservation
      */
     public ReservationView() {
         initComponents();
         initComboBox1();
-        initComboBox2();
+        initComboBox3();
         initHelper();
     }
 
@@ -73,6 +79,8 @@ public class ReservationView extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -89,7 +97,7 @@ public class ReservationView extends javax.swing.JFrame {
 
         jLabel3.setText("Description");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(40, 210, 100, 30);
+        jLabel3.setBounds(40, 250, 100, 30);
 
         jPanel1.add(jComboBox1);
         jComboBox1.setBounds(160, 80, 180, 30);
@@ -98,8 +106,13 @@ public class ReservationView extends javax.swing.JFrame {
         jPanel1.add(jLabel6);
         jLabel6.setBounds(40, 80, 80, 20);
 
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jComboBox2);
-        jComboBox2.setBounds(150, 170, 190, 30);
+        jComboBox2.setBounds(150, 210, 190, 30);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("Reserver");
@@ -109,7 +122,7 @@ public class ReservationView extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1);
-        jButton1.setBounds(270, 380, 250, 40);
+        jButton1.setBounds(270, 420, 250, 40);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("Livre de la Réservation :");
@@ -129,7 +142,7 @@ public class ReservationView extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton4);
-        jButton4.setBounds(170, 320, 130, 40);
+        jButton4.setBounds(170, 360, 130, 40);
 
         jLabel9.setText("Date Reservation :");
         jPanel1.add(jLabel9);
@@ -164,11 +177,23 @@ public class ReservationView extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jPanel1.add(jScrollPane1);
-        jScrollPane1.setBounds(150, 210, 190, 96);
+        jScrollPane1.setBounds(150, 250, 190, 96);
 
         jLabel4.setText("Livre");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(40, 180, 100, 30);
+        jLabel4.setBounds(40, 210, 100, 30);
+
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jComboBox3);
+        jComboBox3.setBounds(150, 170, 190, 30);
+
+        jLabel5.setText("Categorie");
+        jPanel1.add(jLabel5);
+        jLabel5.setBounds(40, 170, 100, 30);
 
         jMenu1.setText("Gestion Des reservations");
         jMenuBar1.add(jMenu1);
@@ -196,8 +221,8 @@ public class ReservationView extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        reservationItems.add(new ReservationItem(ouvrages.get(jComboBox2.getSelectedIndex()-1), jTextArea1.getText()));
-        ouvrageHelper.create(ouvrages.get(jComboBox2.getSelectedIndex()-1));
+        reservationItems.add(new ReservationItem(ouvrages.get(jComboBox2.getSelectedIndex() - 1), jTextArea1.getText()));
+        ouvrageHelper.create(ouvrages.get(jComboBox2.getSelectedIndex() - 1));
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
@@ -207,11 +232,23 @@ public class ReservationView extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         getParam();
-        ReservationFacade reservationFacade= new ReservationFacade();
+        ReservationFacade reservationFacade = new ReservationFacade();
         reservationFacade.save(reservation, reservationItems);
-        reservationItems= new ArrayList<>();
-        reservation= new Reservation();
+        reservationItems = new ArrayList<>();
+        reservation = new Reservation();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+        if (jComboBox3.getSelectedIndex() > 0) {
+            System.out.println("hani f jComboBox3.getSelectedIndex() > 0");
+            initComboBox2(categories.get(jComboBox3.getSelectedIndex() - 1));
+        }
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,9 +292,11 @@ public class ReservationView extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -272,13 +311,17 @@ public class ReservationView extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 
-    private void initComboBox2() {
-        OuvrageFacade ouvrageFacade = new OuvrageFacade();
-        jComboBox2.addItem("--SELECT--");
-         ouvrages = ouvrageFacade.findAll();
-        for (Ouvrage ouvrage : ouvrages) {
-            String auteur = ouvrage.getAuteur() == null ? "" : " : "+ouvrage.getAuteur().getNom();
-            jComboBox2.addItem("" + ouvrage.getNom() + "(" + ouvrage.getId() + ")"+auteur);
+    private void initComboBox2(Categorie categorie) {
+        jComboBox2.removeAllItems();
+        if (categorie != null && categorie.getId() != null) {
+            OuvrageFacade ouvrageFacade = new OuvrageFacade();
+
+            jComboBox2.addItem("--SELECT--");
+            ouvrages = ouvrageFacade.findByCategorie(categorie);
+            for (Ouvrage ouvrage : ouvrages) {
+                String auteur = ouvrage.getAuteur() == null ? "" : " : " + ouvrage.getAuteur().getNom();
+                jComboBox2.addItem("" + ouvrage.getNom() + "(" + ouvrage.getId() + ")" + auteur);
+            }
         }
     }
 
@@ -289,5 +332,10 @@ public class ReservationView extends javax.swing.JFrame {
         for (Adherent adherent : adherents) {
             jComboBox1.addItem("" + adherent.getNom() + " " + adherent.getPrenom() + " (" + adherent.getId() + ")");
         }
+    }
+
+    private void initComboBox3() {
+        categories = categorieFacade.findAll();
+        JComboBoxUtil.initComboBox(jComboBox3, categories);
     }
 }

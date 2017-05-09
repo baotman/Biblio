@@ -5,7 +5,7 @@
  */
 package helper;
 
-import bean.Adherent;
+import bean.ReservationItem;
 import java.util.List;
 import javax.swing.JTable;
 
@@ -13,31 +13,35 @@ import javax.swing.JTable;
  *
  * @author Chaimaa-abd
  */
-public class ReservationItemHelper extends AbstractHelper<Adherent> {
+public class ReservationItemHelper extends AbstractHelper<ReservationItem> {
 
     private static AbstractHelperItem[] titres;
 
     static {
         titres = new AbstractHelperItem[]{
-            new AbstractHelperItem("ID  ", "id"),
-            new AbstractHelperItem("NOM", "nom"),
-            new AbstractHelperItem("PRENOM", "prenom"),
-          new AbstractHelperItem("PRENOM", "numTel"),
-          new AbstractHelperItem("Date naissance", "dateNaissance"),
-             new AbstractHelperItem("Adresse", "adresse"),
-    };
+            new AbstractHelperItem("OUVRAGE", "ouvrage"),
+            new AbstractHelperItem("DESCRIPTION", "description")};
     }
 
-    public ReservationItemHelper(JTable jTable, List<Adherent> list) {
+    public ReservationItemHelper(JTable jTable, List<ReservationItem> list) {
         super(titres, jTable, list);
     }
 
 //    public AuteurHelper(AbstractHelperItem[] abstractHelperItem, JTable jTable) {
 //        super(titres, jTable);
 //    }
-
     public ReservationItemHelper(JTable jTable) {
         super(titres, jTable);
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        if (columnIndex == 0) {
+            return list.get(rowIndex).getOuvrage().getNom();
+        } else {
+            return super.getValueAt(rowIndex, columnIndex);
+        }
+
     }
 
 }

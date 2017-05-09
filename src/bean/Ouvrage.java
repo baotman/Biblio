@@ -24,8 +24,6 @@ import javax.persistence.Temporal;
 @Entity
 public class Ouvrage implements Serializable {
 
-    
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,8 +33,10 @@ public class Ouvrage implements Serializable {
     private Date dateEdition;
     private int nbrPage;
     private int nbrExplaire;
-      @ManyToOne
+    @ManyToOne
     private Auteur auteur;
+    @ManyToOne
+    private Categorie categorie;
     @OneToMany(mappedBy = "ouvrage")
     private List<ReservationItem> reservationItems;
 
@@ -48,14 +48,20 @@ public class Ouvrage implements Serializable {
         this.nbrExplaire = nbrExplaire;
     }
 
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
     public Ouvrage() {
     }
 
     public Ouvrage(String id) {
         this.id = id;
     }
-    
-    
 
     public List<ReservationItem> getReservationItems() {
         return reservationItems;
@@ -64,8 +70,6 @@ public class Ouvrage implements Serializable {
     public void setReservationItems(List<ReservationItem> reservationItems) {
         this.reservationItems = reservationItems;
     }
-    
-  
 
     public String getNom() {
         return nom;
@@ -137,7 +141,7 @@ public class Ouvrage implements Serializable {
 
     @Override
     public String toString() {
-        return "bean.Ouvrage[ id=" + id + " ]";
+        return nom;
     }
 
 }
